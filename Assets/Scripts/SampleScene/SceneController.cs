@@ -1,9 +1,13 @@
 public class SceneController
 {
-    private readonly CharacterViewFactory _characterViewFactory;
+    private readonly PlayerFactory _playerFactory;
+    private readonly IInputSystem _inputSystem;
 
-    public SceneController(CharacterViewFactory characterViewFactory) => 
-        _characterViewFactory = characterViewFactory ?? throw new System.ArgumentNullException(nameof(characterViewFactory));
+    public SceneController(PlayerFactory playerFactory, IInputSystem inputSystem)
+    {
+        _playerFactory = playerFactory ?? throw new System.ArgumentNullException(nameof(playerFactory));
+        _inputSystem = inputSystem ?? throw new System.ArgumentNullException(nameof(inputSystem));
+    }
 
     public void Update()
     {
@@ -11,7 +15,7 @@ public class SceneController
 
     public void Enter(SceneConfig sceneConfig)
     {
-        CharacterView character = _characterViewFactory.Create(sceneConfig.PlayerSpawnPoint.position);
+        Player player = _playerFactory.Create(sceneConfig.PlayerSpawnPoint.position);
     }
 
     public void Exit()

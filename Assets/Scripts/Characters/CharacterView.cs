@@ -14,7 +14,6 @@ public class CharacterView : PresentableView<CharacterPresenter>, ICharacterView
     public void SetDirection(float direction) => 
         Presenter.SetDirection(direction);
 
-
     public void Shoot()
     {
 
